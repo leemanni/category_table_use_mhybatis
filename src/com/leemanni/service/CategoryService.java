@@ -1,6 +1,5 @@
 package com.leemanni.service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
@@ -63,23 +62,34 @@ public class CategoryService {
 		mapper.commit();
 		mapper.close();
 	}
+	
+	/**
+	 * @param idx
+	 * @return CategoryVO
+	 * 
+	 * category 에서 삭제 또는 수정할 idx 얻어옴 해당 idx 를 기반으로
+	 * DAO 에 데이터 요규하는 메소드
+	 */
+	public CategoryVO selectByIdx(int idx) {
+		System.out.println("CategoryService ==> selectByIdx");
+		SqlSession mapper = MySession.getSession();
+		CategoryVO vo = CategoryDAO.getInstance().selectByIdx(mapper, idx);
+		mapper.close();
+		return vo;
+	}
+	
+	/**
+	 *  category 에서 삭제할 idx 얻어옴 해당 idx 를 기반으로 
+	 *  DAO 에 삭제요청하는 메소드
+	 */
+	public void delete(int idx) {
+		System.out.println("CategoryService ==> delete");
+		SqlSession mapper = MySession.getSession();
+		CategoryDAO.getInstance().delete(mapper, idx);
+		mapper.commit();
+		mapper.close();
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

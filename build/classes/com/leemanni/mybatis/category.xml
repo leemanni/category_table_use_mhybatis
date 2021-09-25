@@ -23,6 +23,14 @@
 		values(category_idx_seq.nextval, #{category}, #{gup}, #{lev}, ${seq})
 	</insert>
 	
+	<select id="selectByIdx" parameterType="int" resultType="vo">
+		select * from category where idx = #{idx}
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete from category where idx = #{idx}
+	</delete>
+	
 </mapper>
 
 

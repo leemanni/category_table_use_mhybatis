@@ -21,10 +21,10 @@
 	<hr size="3">
 	<c:forEach var="vo" items="${categoryList.list }">
 		<form class="sub_form" action="reply.jsp" method="post">
-			<input type="text" name="idx" value="${vo.idx}" size="1"/>
+			<%-- <input type="text" name="idx" value="${vo.idx}" size="1"/>
 			<input type="text" name="gup" value="${vo.gup}" size="1"/>
 			<input type="text" name="lev" value="${vo.lev}" size="1"/>
-			<input type="text" name="seq" value="${vo.seq}" size="1"/>
+			<input type="text" name="seq" value="${vo.seq}" size="1"/> --%>
 			<c:if test="${vo.lev > 0}">
 				<c:forEach var="i" begin="1" end="${vo.lev}" step="1">
 					&nbsp&nbsp&nbsp
