@@ -10,6 +10,8 @@ public class CategoryVO {
 	private int gup; // 카테고리 그룹(레퍼런스)
 	private int lev; // 카테고리 레벨
 	private int seq; // 같은 카테고리 그룹 내에서 카테고리 출력 순서
+	private String deleteCheck; // 삭제 여부를 알려주는 변수 (YES or NO)
+	private int deleteReport; //  카테고리 삭제 횟수를 저장하는 변수
 
 	public int getIdx() {
 		return idx;
@@ -51,9 +53,28 @@ public class CategoryVO {
 		this.seq = seq;
 	}
 
+	
+	
+	public String getDeleteCheck() {
+		return deleteCheck;
+	}
+
+	public void setDeleteCheck(String deleteCheck) {
+		this.deleteCheck = deleteCheck;
+	}
+
+	public int getDeleteReport() {
+		return deleteReport;
+	}
+
+	public void setDeleteReport(int deleteReport) {
+		this.deleteReport = deleteReport;
+	}
+
 	@Override
 	public String toString() {
 		return "CategoryVO [idx=" + idx + ", category=" + category + ", gup=" + gup + ", lev=" + lev + ", seq=" + seq
-				+ "]";
+				+ ", deleteCheck=" + deleteCheck + ", deleteReport=" + deleteReport + "]";
 	}
+	
 }

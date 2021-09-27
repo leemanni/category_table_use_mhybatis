@@ -1,4 +1,3 @@
-<%@page import="java.util.ArrayList"%>
 <%@page import="com.leemanni.vo.CategoryVO"%>
 <%@page import="com.leemanni.service.CategoryService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -19,23 +18,13 @@
 <%
 	CategoryService service = CategoryService.getInstance();
 	CategoryVO original = service.selectByIdx(vo.getIdx());
-	//out.println(original);
-	//service.delete(vo.getIdx());
-	//service.deleteCheck(vo.getIdx());
-	//service.deleteRemain(vo.getIdx());
+	service.deleteRestore(vo.getIdx());
 	
-	ArrayList<CategoryVO> deleteList= service.getDeleteList(vo);
-	for(int i = 0 ; i < deleteList.size(); i++){
-		service.delete(deleteList.get(i).getIdx());
-		try{
-			if(deleteList.get(i).getSeq()+1 != deleteList.get(i+1).getSeq() ){
-				break;
-			}
-		}catch(IndexOutOfBoundsException e){}
-	}
-	service.resetReq(original.getGup());
+	
+	
+	
 	out.println("<script>");
-	out.println("alert(' "+ original.getCategory() +" 카테고리 삭제 완료')");
+	out.println("alert(' "+ original.getCategory() +" 카테고리 신고 완료')");
 	out.println("location.href='list.jsp'");
 	out.println("</script>");
 %>

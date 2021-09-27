@@ -31,5 +31,45 @@ $( ()=>{
 			}
 		})
 	})
-	
 })
+
+function mySubmitDelete(obj) {
+	obj.action = 'delete.jsp' ;
+	// 이런식으로 action 이라는 예약어를 사용하면 해당 페이지로 데이터를 전송해준다
+	obj.submit();
+	// action 페이지를 호출하고 폼의 데이터를 전송한다.
+}
+
+function undoRemove(obj) {
+	obj.action = 'deleteRestore.jsp' ;
+	obj.submit();
+}
+
+// 신고 하는 페이지로 연결하는 함수
+function report(obj) {
+	obj.action = 'deleteReport.jsp' ;
+	obj.submit();
+}
+
+function update(obj) {
+	if(!obj.category.value || obj.category.value.trim().length ==0){
+		alert('만들 카테고리 를 입력하세요')
+		obj.category.value = '';
+		obj.category.focus();
+	}else{
+		obj.action = 'update.jsp' ;
+		obj.submit();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+

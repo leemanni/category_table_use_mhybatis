@@ -31,6 +31,39 @@
 		delete from category where idx = #{idx}
 	</delete>
 	
+	<update id="deleteRemain" parameterType="int">
+		update category set category = '삭제된 카테고리 입니다.' where idx =#{idx}
+	</update>
+	
+	<update id="deleteCheck" parameterType="int">
+		update category set deleteCheck = 'YES' where idx =#{idx}
+	</update>
+	
+	<update id="deleteRestore" parameterType="int">
+		update category set deleteCheck = 'NO' where idx =#{idx}
+	</update>
+	
+	<update id="deleteReport" parameterType="int">
+		update category set deleteReport = deleteReport + 1 where idx =#{idx}
+	</update>
+	
+	<update id="update" parameterType="vo">
+		update category set category = #{category} where idx = #{idx}
+	</update>
+	
+	
+	<select id="getDeleteList" parameterType="vo" resultType="vo">
+		select * from category where gup = #{gup} and lev > #{lev} and seq > #{seq} or idx = #{idx} order by gup desc, seq asc
+	</select>
+	
+	<select id="getGupList" parameterType="int" resultType="vo">
+		select * from category where gup = #{gup} order by seq asc
+	</select>
+	
+	<update id="updateReq" parameterType="java.util.HashMap">
+		update category set seq = #{seq} where idx = #{idx}
+	</update>
+	
 </mapper>
 
 
